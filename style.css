@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+
+/* animations for answers to expand and collapse */
+@keyframes expand {
+    from { 
+        max-height: 0px;
+        opacity: 0;
+        visibility: hidden;
+    }
+    to  {
+        max-height: 3rem;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes collapse {
+    from  {
+        max-height: 3rem;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    to { 
+        max-height: 0px;
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+
+
+:root {
+    /* background gradient colors */
+    --soft-violet: hsl(273, 75%, 66%);
+    --soft-blue: hsl(240, 73%, 65%);
+
+    /* text colors */
+        /* outer */
+    --vdark-desat-blue: hsl(238, 29%, 16%);
+    --soft-red: hsl(14, 88%, 65%);
+        /* inner */
+    --vdark-grayish-blue: hsl(237, 12%, 33%);
+    --dark-grayish-blue: hsl(240, 6%, 50%);
+
+    /* divider */
+    --light-grayish-blue: hsl(240, 5%, 91%);
+}
+
+html {
+    height: 100vh;
+    background: linear-gradient(var(--soft-violet), var(--soft-blue)) no-repeat;
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 0.75rem;
+    
+}
+
+.card {
+    position: absolute; 
+    min-width: 920px;
+    min-height: 510px;
+    border-radius: 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    display: flex;
+}
+
+.image-div {
+    width: 50%;
+}
+
+.faq {
+    width: 50%;
+    padding-top: 52px;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+.question-list {
+    padding-top: 20px;
+    padding-right: 95px;
+}
+
+.question-item {
+    margin-top: 17px;
+    border-bottom: 1px solid var(--light-grayish-blue);
+}
+
+.question {
+    position: relative;
+    font-size: 1.125rem;
+    color: var(--dark-grayish-blue);
+    top: 5px;
+}
+
+.question:hover {
+    color: var(--soft-red);
+    cursor: pointer;
+}
+
+/* when the question has been clicked */
+.open {
+    color: var(--vdark-desat-blue);
+    font-weight: 700;
+}
+
+.arrow {
+    position: absolute;
+    right: 105px;
+    transform: translate(0, 5px);
+    pointer-events: none;
+}
+
+.flipped {
+    transform: rotate(180deg) translate(0, -5px);
+}
+
+.answer {
+    color: var(--dark-grayish-blue);
+    line-height: 1.5rem;
+    visibility: hidden;
+    display: block;
+    max-height: 0px;
+    overflow: hidden;
+}
+
+.expand {
+    animation: expand 300ms ease-in-out forwards;
+}
+
+.collapse {
+    animation: collapse 300ms ease-in-out forwards;
+}
+
+
+.clipped-images {
+    position: absolute;
+    left: 0%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+
+.img-desktop-bg {
+    position: absolute;
+    width: 960px;
+    top: -293px;
+    left: -565px;
+}
+
+.img-desktop-woman {
+    position: absolute;
+    width: 480px;
+    top: 60px;
+    left: -85px;
+}
+
+.img-desktop-box {
+    position: absolute;
+    top: 201px;
+    left: -93px;
+}
+
+.img-mobile-woman {
+    display: none;
+}
+
+/* change images and sizes for small screens */
+@media screen and (max-width: 400px) {    
+    .clipped-images {
+        display: none;
+    }
+    .img-desktop-bg {
+        display: none;
+    }
+
+    .img-desktop-box {
+        display: none;
+    }
+
+    .img-desktop-woman {
+        display: none;
+    }
+
+    .img-mobile-woman {
+        display: block;
+        position: absolute;
+        top: -108px;
+        left: 15px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .card {
+        min-width: 0;
+        min-height: 0;
+        top: 420px;
+        width: 325px;
+        height: 535px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .faq {
+        width: 275px;
+        padding-top: 100px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .question-list {
+        padding-right: 0px;
+    }
+
+    .arrow {
+        right: 30px;
+    }
+  }
+
+
+
+
+.attribution {
+    margin-top: 1rem;
+    font-size: 11px;
+    text-align: center;
+}
+.attribution a { color: hsl(228, 45%, 44%); }
